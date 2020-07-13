@@ -1,0 +1,29 @@
+<input #newPost
+      (keyup.enter)="addPost(newPost.value)"
+      (blur)="addPost(newPost.value); newPost.value='' ">
+
+    <button (click)="addPost(newPost.value)">Post</button>
+
+    <igx-list *ngFor="let post of posts">
+        <igx-list-item>
+          <h5>{{post.value}}</h5> 
+          <h20 style="margin-right: 10px">{{post.city}}  {{post.location.cooordinates.longitude}}   {{post.location.cooordinates.latitude}}</h20>          
+        </igx-list-item>
+        <igx-list-item >
+          <div ng-show="boxShow">
+              <input #newReply
+      (keyup.enter)="addReply(post.id,newReply.value)"
+      (blur)="addReply(post.id,newReply.value); ">
+              <button (click)="addReply(post.id,newReply.value)">Reply</button>
+          </div>
+        
+        </igx-list-item>
+
+
+        <igx-list-item>{{post.location.cooordinates}}</igx-list-item> 
+
+        
+    </igx-list>
+
+
+    
